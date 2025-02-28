@@ -2,9 +2,11 @@
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if($username == "admin" && $password == "password123") {
-    echo "Login successful!";
+if ($username == "admin" && $password == "password123") {
+    header("Location: success.html");
+    exit();
 } else {
-    echo "Invalid credentials!";
+    header("Location: fail.html");
+    exit();
 }
 ?>
