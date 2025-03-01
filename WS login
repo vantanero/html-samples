@@ -1,12 +1,27 @@
 <?php
-$username = $_POST['username'];
-$password = $_POST['password'];
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-if ($username == "admin" && $password == "password123") {
-    header("Location: success.html");
-    exit();
+echo "Debug: login.php is running.<br>"; // To check if the script executes
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "Received POST data: ";
+    print_r($_POST); // Print POST data for debugging
+
+    $username = isset($_POST['user']) ? $_POST['user'] : '';
+    $password = isset($_POST['pass']) ? $_POST['pass'] : '';
+
+    if ($username == "admin" && $password == "password123") {
+        echo "<br>Login successful. Redirecting..."; // Debug message
+        header("Location: success.html");
+        exit();
+    } else {
+        echo "<br>Login failed. Redirecting..."; // Debug message
+        header("Location: fail.html");
+        exit();
+    }
 } else {
-    header("Location: fail.html");
-    exit();
+    echo "Debug: This page only accepts POST requests.";
 }
 ?>
