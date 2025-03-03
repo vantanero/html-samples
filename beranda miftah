@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f7f7;
+        }
+
+        header {
+                background-color: #333;
+                color: #fff;
+                padding: 1em;
+                text-align: center;
+        }
+
+        main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2em;
+        }
+
+        .profile {
+                background-color: #fff;
+                padding: 1em;
+                border: 1px solid #ddd;
+        }
+
+        .foto {
+                background-color: #fff;
+                padding: 1em;
+                border: 1px solid #ddd;
+        }
+
+        .foto img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+        }
+
+        body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f7f7;
+        }
+
+        header {
+                background-color: #333;
+                color: #fff;
+                padding: 1em;
+                text-align: center;
+                animation: fadeIn 2s;
+        }
+
+        main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2em;
+                animation: slideIn 2s;
+        }
+
+        .profile {
+                background-color: #fff;
+                padding: 1em;
+                border: 1px solid #ddd;
+                animation: zoomIn 2s;
+        }
+
+        .foto {
+                background-color: #fff;
+                padding: 1em;
+                border: 1px solid #ddd;
+                animation: rotateIn 2s;
+        }
+
+        .foto img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                animation: pulse 2s;
+        }
+
+        @keyframes fadeIn {
+                0% {
+                opacity: 0;
+                }
+                100% {
+                opacity: 1;
+                }
+        }
+
+        @keyframes slideIn {
+                0% {
+                transform: translateY(-100%);
+                }
+                100% {
+                transform: translateY(0);
+                }
+        }
+
+        @keyframes zoomIn {
+                0% {
+                transform: scale(0.5);
+                }
+                100% {
+                transform: scale(1);
+                }
+        }
+
+        @keyframes rotateIn {
+                0% {
+                transform: rotate(0deg);
+                }
+                100% {
+                transform: rotate(360deg);
+                }
+        }
+
+        @keyframes pulse {
+                0% {
+                transform: scale(1);
+                }
+                50% {
+                transform: scale(1.1);
+                }
+                100% {
+                transform: scale(1);
+                }
+                body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f7f7;
+                transition: background-color 0.5s ease-in-out;
+        }
+
+        header {
+                background-color: #333;
+                color: #fff;
+                padding: 1em;
+                text-align: center;
+                transition: background-color 0.5s ease-in-out;
+        }
+
+        main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2em;
+                transition: transform 0.5s ease-in-out;
+        }
+
+        .profile {
+                background-color: #fff;
+                padding: 1em;
+                border: 1px solid #ddd;
+                transition: transform 0.5s ease-in-out;
+        }
+
+        .foto {
+                background-color: #fff;
+                padding: 1em;
+                border: 1px solid #ddd;
+                transition: transform 0.5s ease-in-out;
+        }
+
+        .foto img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease-in-out;
+        }
+
+/* Transisi hover */
+        header:hover {
+                background-color: #444;
+        }
+
+        main:hover {
+                transform: scale(1.1);
+        }
+
+        .profile:hover {
+                transform: scale(1.1);
+        }
+
+        .foto:hover {
+                transform: scale(1.1);
+        }
+
+        .foto img:hover {
+                transform: scale(1.2);
+        }
+
+/* Transisi klik */
+        header:active {
+                background-color: #1906f0;
+        }
+
+        main:active {
+                transform: scale(0.9);
+        }
+
+        .profile:active {
+                transform: scale(0.9);
+        }
+
+        .foto:active {
+                transform: scale(0.9);
+        }
+
+        .foto img:active {
+                transform: scale(0.8);
+        }
+    }
+    </style>
+    <head>
+        <header class="fadeIn">
+            <h1>Esteh Gus Miftah</h1>
+        </header>
+        <main class="slideIn">
+            <section class="profile zoomOut">
+                <h2>Tentang Esteh Gus Miftah</h2>
+                <p>Esteh Gus Miftah adalah seorang tokoh yang terkenal dengan kebaikannya dan kepeduliannya terhadap masyarakat.</p>
+            </section>
+            <section class="foto rotateIn">
+                <h2>Foto Esteh Gus Miftah</h2>
+                <img src="https://thumb.tvonenews.com/thumbnail/2024/12/11/6759969cbe681-viral-video-gus-miftah-marah-marah-ke-jemaah-dan-merasa-tersinggung_1265_711.jpg" alt="Foto Esteh Gus Miftah" class="pulse">
+            </section>
+        </main>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Esteh Gus Miftah</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Esteh Gus Miftah</h1>
+        </header>
+        <main>
+            <section class="profile">
+                <h2>Tentang Esteh Gus Miftah</h2>
+                <p>Esteh Gus Miftah adalah seorang tokoh yang terkenal dengan kebaikannya dan kepeduliannya terhadap masyarakat.</p>
+            </section>
+            <section class="foto">
+                <h2>!!</h2>
+                <img src="data:image/jpeg;base64,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" alt="Foto Esteh Gus Miftah">
+            </section>
+        </main>
+            <script src="script.js"></script>
+    </body>
+</html>
