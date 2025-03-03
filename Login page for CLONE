@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Set an error message in the session
         $_SESSION['error'] = "Invalid username or password.";
         echo "<br>Login failed. Redirecting..."; // Debug message
-        header("Location: login.php"); // Redirect back to the login page
+        header("Location: fail.html"); // Redirect to fail.html
         exit();
     }
 } else {
