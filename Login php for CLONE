@@ -1,0 +1,23 @@
+<?php
+session_start(); // Start session
+echo "Debug: login.php is running.<br>";
+echo "There's literally nothing in here.<br>";
+
+// Define valid username and password (change as needed)
+$valid_username = "admin";
+$valid_password = "password123";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    if ($username === $valid_username && $password === $valid_password) {
+        $_SESSION["authenticated"] = true; // Set session variable
+        header("Location: success.html"); // Redirect to success page
+        exit();
+    } else {
+        header("Location: fail.html"); // Redirect to failure page
+        exit();
+    }
+}
+?>
