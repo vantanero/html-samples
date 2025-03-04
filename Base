@@ -1,27 +1,20 @@
 <?php
 session_start();
 
-$correct_username = "admin";
-$correct_password = "password123";
+// Debugging - Check if POST data is received
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    echo "Form was not submitted via POST method.";
+    exit();
+}
 
 if (!isset($_POST["username"]) || !isset($_POST["password"])) {
-    $_SESSION["error"] = "Invalid request.";
-    echo "Invalid Request";
+    echo "POST data is missing.";
     exit();
 }
 
-$username = trim($_POST["username"]);
-$password = trim($_POST["password"]);
+$username = $_POST["username"];
+$password = $_POST["password"];
 
-if ($username === $correct_username && $password === $correct_password) {
-    $_SESSION["authenticated"] = true;
-    echo "Login Successful! Redirecting...";
-    header("Refresh: 3; URL=success.php");
-    exit();
-} else {
-    $_SESSION["error"] = "Incorrect username or password.";
-    echo "Login Failed! Redirecting...";
-    header("Refresh: 3; URL=fail.php");
-    exit();
-}
+echo "Received Username: " . htmlspecialchars($username) . "<br>";
+echo "Received Password: " . htmlspecialchars($password) . "<br>";
 ?>
