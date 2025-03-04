@@ -1,9 +1,9 @@
 <?php
-session_start(); 
+session_start();
 
-// Dummy credentials (replace with database check)
+// Set valid credentials
 $valid_username = "admin";
-$valid_password = "password";
+$valid_password = "password123";
 
 // Get input from form
 $username = $_POST['username'] ?? '';
@@ -12,13 +12,14 @@ $password = $_POST['password'] ?? '';
 // Check credentials
 if ($username === $valid_username && $password === $valid_password) {
     // Successful login
-    $_SESSION['user'] = $username; // Store user session
-    header("Location: dashboard.php"); // Redirect to dashboard or home page
+    $_SESSION['authenticated'] = true; // Set authentication session
+    $_SESSION['user'] = $username; // Store username
+    header("Location: success.php"); // Redirect to success page
     exit();
 } else {
     // Failed login
     $_SESSION['error'] = "Invalid username or password!";
-    header("Location: fail.php"); // Redirect to fail.php
+    header("Location: fail.php"); // Redirect to fail page
     exit();
 }
 ?>
