@@ -1,6 +1,24 @@
 <?php
-session_start();
-session_destroy(); // Destroy session
-header("Location: index.html"); // Redirect to login page
-exit();
+session_start(); // Start session
+
+// Enable error reporting (for debugging, remove in production)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = isset($_POST['user']) ? $_POST['user'] : '';
+    $password = isset($_POST['pass']) ? $_POST['pass'] : '';
+
+    if ($username == "admin" && $password == "password123") {
+        $_SESSION["authenticated"] = true; // Set session variable
+        header("Location: success.php"); // Redirect to success page
+        exit();
+    } else {
+        $_SESSION['error'] = "Invalid username or password"; // Store error message
+        header("Location: index.html"); // Redirect back to login page
+        exit();
+    }
+} else {
+    echo "Invalid request method.";
+}
 ?>
