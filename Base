@@ -4,24 +4,24 @@ session_start();
 $correct_username = "admin";
 $correct_password = "password123";
 
-// Check if the username and password are set
 if (!isset($_POST["username"]) || !isset($_POST["password"])) {
     $_SESSION["error"] = "Invalid request.";
-    header("Location: fail.php");
+    echo "Invalid Request";
     exit();
 }
 
 $username = trim($_POST["username"]);
 $password = trim($_POST["password"]);
 
-// Verify credentials
 if ($username === $correct_username && $password === $correct_password) {
     $_SESSION["authenticated"] = true;
-    header("Location: success.php");
+    echo "Login Successful! Redirecting...";
+    header("Refresh: 3; URL=success.php");
     exit();
 } else {
     $_SESSION["error"] = "Incorrect username or password.";
-    header("Location: fail.php");
+    echo "Login Failed! Redirecting...";
+    header("Refresh: 3; URL=fail.php");
     exit();
 }
 ?>
