@@ -1,35 +1,40 @@
-<?php
-session_start();
+###    fail.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Failed</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; padding: 50px; }
+        .error { color: red; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2 class="error">Login Failed</h2>
+    <p><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
+    <a href="index.html">Try Again</a>
+</body>
+</html>
 
-$correct_username = "admin";
-$correct_password = "password123";
-
-// Check if form was submitted via POST
-if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    $_SESSION["error"] = "Invalid request method.";
-    header("Location: fail.php");
-    exit();
-}
-
-// Check if username and password are set
-if (!isset($_POST["username"]) || !isset($_POST["password"])) {
-    $_SESSION["error"] = "Form data is missing.";
-    header("Location: fail.php");
-    exit();
-}
-
-// Get input values and trim spaces
-$username = trim($_POST["username"]);
-$password = trim($_POST["password"]);
-
-// Validate credentials
-if ($username === $correct_username && $password === $correct_password) {
-    $_SESSION["authenticated"] = true;
-    header("Location: success.php");
-    exit();
-} else {
-    $_SESSION["error"] = "Incorrect username or password.";
-    header("Location: fail.php");
-    exit();
-}
-?>
+###    success.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome, Admin!</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #e3f2fd; text-align: center; padding: 50px; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); display: inline-block; }
+        h2 { color: #2e7d32; }
+        .logout-btn { display: inline-block; padding: 10px 20px; background: #d32f2f; color: white; text-decoration: none; border-radius: 4px; }
+        .logout-btn:hover { background: #b71c1c; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login Successful!</h2>
+        <p>Welcome, Admin!</p>
+        <a class="logout-btn" href="logout.php">Logout</a>
+    </div>
+</body>
+</html>
