@@ -1,26 +1,24 @@
 <?php
-session_start();
-if (!isset($_SESSION['error'])) {
-    header("Location: index.html"); // If no error, send back to login page
+session_start(); 
+
+// Dummy credentials (replace with database check)
+$valid_username = "admin";
+$valid_password = "password";
+
+// Get input from form
+$username = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
+
+// Check credentials
+if ($username === $valid_username && $password === $valid_password) {
+    // Successful login
+    $_SESSION['user'] = $username; // Store user session
+    header("Location: dashboard.php"); // Redirect to dashboard or home page
+    exit();
+} else {
+    // Failed login
+    $_SESSION['error'] = "Invalid username or password!";
+    header("Location: fail.php"); // Redirect to fail.php
     exit();
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Failed</title>
-    <style>.error { color: red; }</style>
-</head>
-<body>
-    <h2>Login Failed</h2>
-    <p class="error">
-        <?php 
-            echo $_SESSION['error']; 
-            unset($_SESSION['error']); // Clear error after displaying
-        ?>
-    </p>
-    <a href="index.html">Try Again</a>
-</body>
-</html>
