@@ -1,25 +1,27 @@
 <?php
 session_start();
 
-// Set valid credentials
-$valid_username = "admin";
-$valid_password = "password123";
+$correct_username = "admin";
+$correct_password = "password123";
 
-// Get input from form
-$username = $_POST['username'] ?? '';
-$password = $_POST['password'] ?? '';
+// Check if the username and password are set
+if (!isset($_POST["username"]) || !isset($_POST["password"])) {
+    $_SESSION["error"] = "Invalid request.";
+    header("Location: fail.php");
+    exit();
+}
 
-// Check credentials
-if ($username === $valid_username && $password === $valid_password) {
-    // Successful login
-    $_SESSION['authenticated'] = true; // Set authentication session
-    $_SESSION['user'] = $username; // Store username
-    header("Location: success.php"); // Redirect to success page
+$username = trim($_POST["username"]);
+$password = trim($_POST["password"]);
+
+// Verify credentials
+if ($username === $correct_username && $password === $correct_password) {
+    $_SESSION["authenticated"] = true;
+    header("Location: success.php");
     exit();
 } else {
-    // Failed login
-    $_SESSION['error'] = "Invalid username or password!";
-    header("Location: fail.php"); // Redirect to fail page
+    $_SESSION["error"] = "Incorrect username or password.";
+    header("Location: fail.php");
     exit();
 }
 ?>
