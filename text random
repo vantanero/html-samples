@@ -1,1 +1,3 @@
 Import-Csv -Path "C:\inetpub\logs\LogFiles\W3SVC1\u_ex250323.log" -Delimiter " " -Header (Get-Content "C:\inetpub\logs\LogFiles\W3SVC1\u_ex250323.log" | Select-String "^#Fields:" | ForEach-Object { $_ -replace "#Fields: ", "" } | ForEach-Object { $_ -split " " }) | Where-Object { $_.date -notmatch "^#" } | Export-Csv -Path "C:\inetpub\logs\LogFiles\W3SVC1\iis_log_converted.csv" -NoTypeInformation
+
+Import-Csv -Path "C:\inetpub\logs\LogFiles\W3SVC1\iis_log_converted.csv" | ConvertTo-Json | Out-File "C:\inetpub\logs\LogFiles\W3SVC1\iis_log_converted.json"
