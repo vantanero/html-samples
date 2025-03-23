@@ -16,18 +16,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: success.html");
         exit();
     } else {
-        // Failed login - HTTP 401, show message with delayed redirect
+        // Failed login - HTTP 401, show message with countdown and delayed redirect
         http_response_code(401);
         echo '<!DOCTYPE html>
               <html lang="en">
               <head>
                   <meta charset="UTF-8">
-                  <meta http-equiv="refresh" content="3;url=index.html?error=unauthorized">
                   <title>Login Failed</title>
+                  <script>
+                      let seconds = 3;
+                      function updateCountdown() {
+                          document.getElementById("countdown").innerText = 
+                              "Invalid username or password. Redirecting to login page in " + seconds + " second" + (seconds === 1 ? "" : "s") + "...";
+                          seconds--;
+                          if (seconds < 0) {
+                              window.location.href = "index.html?error=unauthorized";
+                          } else {
+                              setTimeout(updateCountdown, 1000);
+                          }
+                      }
+                      window.onload = function() {
+                          updateCountdown();
+                      };
+                  </script>
               </head>
               <body>
                   <h2>Login Failed</h2>
-                  <p style="color: red;">Invalid username or password. Redirecting to login page in 3 seconds...</p>
+                  <p id="countdown" style="color: red;"></p>
               </body>
               </html>';
         exit();
