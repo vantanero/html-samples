@@ -16,9 +16,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: success.html");
         exit();
     } else {
-        // Failed login - HTTP 401, redirect to index.html with error
+        // Failed login - HTTP 401, show message with delayed redirect
         http_response_code(401);
-        header("Location: index.html?error=unauthorized");
+        echo '<!DOCTYPE html>
+              <html lang="en">
+              <head>
+                  <meta charset="UTF-8">
+                  <meta http-equiv="refresh" content="3;url=index.html?error=unauthorized">
+                  <title>Login Failed</title>
+              </head>
+              <body>
+                  <h2>Login Failed</h2>
+                  <p style="color: red;">Invalid username or password. Redirecting to login page in 3 seconds...</p>
+              </body>
+              </html>';
         exit();
     }
 } else {
