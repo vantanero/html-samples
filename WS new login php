@@ -1,7 +1,7 @@
 <?php
 // Hardcoded correct credentials for testing
 $correct_username = "admin";
-$correct_password = "password123";
+$correct_password = "1234";
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -16,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: success.html");
         exit();
     } else {
-        // Failed login - HTTP 401
+        // Failed login - HTTP 401, redirect to index.html with error
         http_response_code(401);
-        echo "Unauthorized: Invalid username or password.";
+        header("Location: index.html?error=unauthorized");
         exit();
     }
 } else {
